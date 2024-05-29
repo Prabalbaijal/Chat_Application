@@ -1,14 +1,30 @@
 import React, { useState } from 'react'
 import back1 from './back1.jpg'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import axios from 'axios'
 
 function Login() {
+  const navigate=useNavigate()
   const [user,setUser]=useState({
     username:"",
     password:""
   })
-  const onSubmitHandler=(e)=>{
+  const onSubmitHandler=async (e)=>{
     e.preventDefault()
+    try {
+      const res = await axios.post('http://localhost:7000/api/v1/user/login', user, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      })
+        navigate("/")
+      console.log(res)
+    } catch (error) {
+      toast.error(error.response.data.message)
+      console.log(error)
+    }
     console.log(user)
     setUser({
       username:"",
@@ -17,9 +33,9 @@ function Login() {
   }
   return (
     <div className='relative grid h-screen bg-repeat place-content-center' style={{backgroundImage: `url(${back1})`}}>
-      <div className='relative flex flex-col content-center justify-center text-white bg-no-repeat border border-gray-100 shadow-lg z-16 rounded-2xl p-14 gap-9 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10'>
+      <div className='relative flex flex-col content-center justify-center text-white bg-no-repeat border shadow-lg z-16 rounded-3xl p-14 gap-9 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10'>
         <div className='h-14'>
-          <h1 className='text-5xl font-bold text-center'>
+          <h1 className='text-5xl italic font-bold text-center underline'>
             Login
           </h1>
         </div>
@@ -50,7 +66,7 @@ function Login() {
             
             <div className='text-center underline'>
               <Link to="/register">
-            Don't have an account?Signup
+            Don't have an account? Signup
             </Link>
             </div>
             <div className='flex justify-center'>
