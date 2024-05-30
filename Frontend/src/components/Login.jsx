@@ -37,7 +37,7 @@ function Login() {
   }
   return (
     <div className='relative grid h-screen bg-repeat place-content-center' style={{backgroundImage: `url(${back1})`}}>
-      <div className='relative flex flex-col content-center justify-center text-white bg-no-repeat border shadow-lg z-16 rounded-3xl p-14 gap-9 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10'>
+      <div className='relative z-30 flex flex-col content-center justify-center text-black bg-no-repeat border shadow-lg rounded-3xl p-14 gap-9 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
         <div className='h-14'>
           <h1 className='text-5xl italic font-bold text-center underline'>
             Login
@@ -54,7 +54,7 @@ function Login() {
               placeholder='Username' 
               value={user.username}
               onChange={(e)=>setUser({...user,username:e.target.value})}
-              className='h-8 p-3 text-black bg-white rounded-lg input-bordered w-60'></input>
+              className='h-8 p-3 text-black bg-white border-2 border-black border-solid rounded-lg input-bordered w-60'></input>
             </div>
             <div className='flex justify-around gap-11'>
               <label className='text-lg font-semibold'>
@@ -65,7 +65,7 @@ function Login() {
               placeholder='Password' 
               value={user.password}
               onChange={(e)=>setUser({...user,password:e.target.value})}
-              className='h-8 p-3 text-black bg-white rounded-lg input-bordered w-60'></input>
+              className='h-8 p-3 text-black bg-white border-2 border-black border-solid rounded-lg input-bordered w-60'></input>
             </div>
             
             <div className='text-center underline'>
@@ -74,7 +74,7 @@ function Login() {
             </Link>
             </div>
             <div className='flex justify-center'>
-            <button type="submit" className="btn btn-neutral">Login</button>
+            <button type="submit" className="text-white btn btn-primary">Login</button>
             </div>
           </form>
         </div>

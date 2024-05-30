@@ -30,7 +30,7 @@ function Registration() {
       }
       console.log(res)
     } catch (error) {
-      toast.error('Something went wrong!')
+      toast.error(error.response.data.message)
       console.log(error)
     }
     setUser({
@@ -47,7 +47,7 @@ function Registration() {
 
   return (
     <div className='relative grid h-screen bg-repeat place-content-center' style={{ backgroundImage: `url(${back1})` }}>
-      <div className='relative flex flex-col content-center justify-center text-white bg-no-repeat border shadow-lg rounded-3xl z-16 p-14 gap-9 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10'>
+      <div className='relative z-30 flex flex-col content-center justify-center text-black bg-no-repeat border shadow-2xl rounded-3xl p-14 gap-9 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
         <div className='h-14'>
           <h1 className='text-5xl italic font-bold text-center underline'>
             Signup
@@ -64,7 +64,7 @@ function Registration() {
                 placeholder='Name'
                 value={user.name}
                 onChange={(e) => setUser({ ...user, name: e.target.value })}
-                className='h-8 p-3 text-black bg-white rounded-lg input-bordered w-60'></input>
+                className='h-8 p-3 text-black bg-white border-2 border-black border-solid rounded-lg input-bordered w-60'></input>
             </div>
             <div className='flex justify-around gap-11'>
               <label className='text-lg font-semibold'>
@@ -75,7 +75,7 @@ function Registration() {
                 placeholder='Username'
                 value={user.username}
                 onChange={(e) => setUser({ ...user, username: e.target.value })}
-                className='h-8 p-3 text-black bg-white rounded-lg input-bordered w-60'></input>
+                className='h-8 p-3 text-black bg-white border-2 border-black border-solid rounded-lg input-bordered w-60'></input>
             </div>
             <div className='flex justify-around gap-11'>
               <label className='text-lg font-semibold'>
@@ -86,7 +86,7 @@ function Registration() {
                 value={user.password}
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
                 placeholder='Password'
-                className='h-8 p-3 text-black bg-white rounded-lg input-bordered w-60'></input>
+                className='h-8 p-3 text-black bg-white border-2 border-black border-solid rounded-lg input-bordered w-60'></input>
             </div>
             <div className='flex justify-around gap-3'>
               <label className='text-lg font-semibold'>
@@ -97,26 +97,26 @@ function Registration() {
                 placeholder='Confirm Password'
                 value={user.confirmPassword}
                 onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })}
-                className='h-8 p-3 text-black bg-white rounded-lg input-bordered w-60'></input>
+                className='h-8 p-3 text-black bg-white border-2 border-black border-solid rounded-lg input-bordered w-60'></input>
             </div>
             <div className='flex items-center justify-around'>
               <span className='text-lg font-semibold'>Gender:</span>
               <div className='flex gap-2 w-60'>
                 <label className="cursor-pointer label">
-                  <span className="text-white label-text">Male</span>
+                  <span className="text-black label-text">Male &nbsp;</span>
                   <input
                     checked={user.gender === "male"}
                     onChange={() => handleGender("male")}
                     type="checkbox"
-                    className="checkbox checkbox-primary" />
+                    className="border-2 checkbox checkbox-primary" />
                 </label>
                 <label className="cursor-pointer label">
-                  <span className="text-white label-text">Female</span>
+                  <span className="text-black label-text">Female &nbsp; </span>
                   <input
                     checked={user.gender === "female"}
                     onChange={() => handleGender("female")}
                     type="checkbox"
-                    className="checkbox checkbox-secondary" />
+                    className="border-2 checkbox checkbox-secondary" />
                 </label>
               </div>
             </div>
@@ -126,7 +126,7 @@ function Registration() {
               </Link>
             </div>
             <div className='flex justify-center'>
-              <button type="submit" className="btn btn-neutral">Signup</button>
+              <button type="submit" className="text-white btn btn-primary">Signup</button>
             </div>
           </form>
         </div>

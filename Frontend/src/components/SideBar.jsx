@@ -29,7 +29,7 @@ function SideBar() {
       <div className='mt-2'>
       <button 
       onClick={logoutFunction}
-      className="h-4 btn btn-primary">Logout</button>
+      className="h-4 text-white btn btn-primary">Logout</button>
       </div>
     </div>
   )
