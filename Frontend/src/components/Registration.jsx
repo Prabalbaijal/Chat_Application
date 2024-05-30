@@ -30,7 +30,7 @@ function Registration() {
       }
       console.log(res)
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Something went wrong!')
       console.log(error)
     }
     setUser({

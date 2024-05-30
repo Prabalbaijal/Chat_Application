@@ -3,6 +3,8 @@ import back1 from './back1.jpg'
 import { Link,useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { setAuthUser } from '../redux/userslice'
 
 function Login() {
   const navigate=useNavigate()
@@ -10,6 +12,7 @@ function Login() {
     username:"",
     password:""
   })
+  const dispatch=useDispatch();
   const onSubmitHandler=async (e)=>{
     e.preventDefault()
     try {
@@ -20,7 +23,8 @@ function Login() {
         withCredentials: true
       })
         navigate("/")
-      console.log(res)
+        toast.success("Logged in Successfully.")
+      dispatch(setAuthUser(res.data))
     } catch (error) {
       toast.error(error.response.data.message)
       console.log(error)
