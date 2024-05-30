@@ -13,3 +13,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+::-webkit-scrollbar {
+  /* Customize the scrollbar width */
+  width:6px;
+
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
+  background-color: #646EE4;
+  border-radius: 10px;
+}
