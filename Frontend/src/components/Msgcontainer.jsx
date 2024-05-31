@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SendInput from './SendInput'
 import Messages from './Messages'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelectedUser } from '../redux/userslice'
 
 function Msgcontainer() {
     const {selectedUser}=useSelector(store=>store.user)
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        return ()=> dispatch(setSelectedUser(null))
+    },[])
     return (
-        <div className='gap-2 flex flex-col min-[100px]:w-[300px] md:w-[700px] sm:w-[800px] sm:h-[480px] min-[100px]:h-[380px]'>
+        <>
+        {
+            selectedUser?(
+                <div className='gap-2 flex flex-col min-[100px]:w-[300px] md:w-[700px] sm:w-[800px] sm:h-[480px] min-[100px]:h-[380px]'>
             <div className='flex flex-wrap items-center gap-2 p-3 text-white bg-[#646EE4] rounded-lg'>
                 <div className='avatar online'>
                     <div className='w-10 rounded-full'>
@@ -23,6 +31,12 @@ function Msgcontainer() {
             <Messages/>
             <SendInput/>
         </div>
+            ):(
+                <div className='flex items-center text-[#646EE4] font-bold text-3xl'>Please select any user to start the chat.</div>
+            )
+        }
+        </>
+        
     )
 }
 
