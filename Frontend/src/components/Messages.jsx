@@ -12,7 +12,9 @@ function Messages() {
       {
         messages?.map((message)=>{
           return(
+            <>
             <Message key={message._id} message={message}/>
+            </>
           )
         })
       }

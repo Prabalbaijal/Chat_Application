@@ -6,14 +6,15 @@ function Message({message}) {
     useEffect(()=>{
         scroll.current?.scrollIntoView({behavior:"smooth"})
     },[message])
-    const {loggedUser}=useSelector(store=>store.user)
-    console.log(loggedUser)
+    const {authUser}=useSelector(store=>store.user)
+    const {selectedUser}=useSelector(store=>store.user)
+    console.log(authUser)
     return (
         <div>
-            <div ref={scroll} className={`chat ${message?.senderId === loggedUser?._id ? 'chat-end' : 'chat-start'}`}>
+            <div ref={scroll} className={`chat ${message?.senderId === authUser?._id ? 'chat-end' : 'chat-start'}`}>
                 <div className="chat-image avatar">
                     <div className="w-10 rounded-full">
-                        <img alt="Tailwind CSS chat bubble component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img alt="Tailwind CSS chat bubble component" src={`${message?.senderId === authUser?._id ? `${authUser.profilepic}` : `${selectedUser.profilepic}`}`} />
                     </div>
                 </div>
                 <div className="chat-header">

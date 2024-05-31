@@ -23,7 +23,9 @@ function Login() {
         withCredentials: true
       })
         navigate("/")
-        toast.success("Logged in Successfully.")
+        toast.success(`Welcome ${res.data.name}`,{
+          icon:'👋'
+        })
       dispatch(setAuthUser(res.data))
     } catch (error) {
       if(error.response)
