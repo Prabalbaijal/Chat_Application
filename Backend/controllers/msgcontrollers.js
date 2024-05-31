@@ -26,7 +26,7 @@ export const sendMsg=async(req,res)=>{
         await conversation.save()
 
         return res.status(201).json({
-            message:"Message sent",
+            newMsg
         })
         //Socket Io 
     }catch(error){

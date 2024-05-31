@@ -1,10 +1,17 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelectedUser } from '../redux/userslice'
 
 function OtherUser(props) {
   const user=props.user
+  const dispatch=useDispatch()
+  const {selectedUser}=useSelector(store=>store.user)
+  const selectedUserFunction=(user)=>{
+    dispatch(setSelectedUser(user))
+  }
   return (
     <div>
-      <div className='flex items-center gap-2 p-2 rounded-lg hover:bg-[#646EE4]'>
+      <div onClick={()=>selectedUserFunction(user)} className={`${selectedUser?._id===user?._id ? 'bg-[#646EE4] text-white':''} flex items-center gap-2 p-2 rounded-lg hover:bg-[#646EE4]`}>
                 <div className='avatar online'>
                     <div className='w-10 rounded-full'>
                         <img alt="userprofile" src={user?.profilepic} />
