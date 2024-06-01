@@ -10,7 +10,6 @@ function useOtherUsers() {
             try{
                 axios.defaults.withCredentials=true
                 const res=await axios.get('http://localhost:7000/api/v1/user')
-                console.log(res)
                 dispatch(setOtherUsers(res.data))
             }catch(error){
                 console.log(error)

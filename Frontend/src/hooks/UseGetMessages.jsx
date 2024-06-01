@@ -11,7 +11,6 @@ function useGetMessages() {
                 try{
                     axios.defaults.withCredentials=true
                     const res=await axios.get(`http://localhost:7000/api/v1/message/${selectedUser?._id}`)
-                    console.log(res)
                     dispatch(setMessages(res.data))
                 }catch(error){
                     console.log(error)

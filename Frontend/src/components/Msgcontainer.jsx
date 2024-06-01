@@ -5,18 +5,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedUser } from '../redux/userslice'
 
 function Msgcontainer() {
-    const {selectedUser}=useSelector(store=>store.user)
+    const {selectedUser,onlineUsers}=useSelector(store=>store.user)
     const dispatch=useDispatch()
-    useEffect(()=>{
-        return ()=> dispatch(setSelectedUser(null))
-    },[])
+    
+    const isOnline=onlineUsers.includes(selectedUser?._id)
     return (
         <>
         {
             selectedUser?(
                 <div className='gap-2 flex flex-col min-[100px]:w-[300px] md:w-[700px] sm:w-[800px] sm:h-[480px] min-[100px]:h-[380px]'>
             <div className='flex flex-wrap items-center gap-2 p-3 text-white bg-[#646EE4] rounded-lg'>
-                <div className='avatar online'>
+            <div className={`avatar ${isOnline?'online':''}`}>
                     <div className='w-10 rounded-full'>
                         <img alt="userprofile" src={selectedUser?.profilepic} />
                     </div>

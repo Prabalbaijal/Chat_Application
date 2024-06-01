@@ -49,7 +49,6 @@ export const getMsg=async(req,res)=>{
         const conversation=await Chat.findOne({
             members:{$all: [senderId,receiverId]}
         }).populate("message")
-        console.log(conversation?.message)
         return res.status(200).json(conversation?.message)
     }catch(error){
         console.log(error)

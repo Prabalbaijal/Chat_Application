@@ -8,7 +8,6 @@ function Message({message}) {
     },[message])
     const {authUser}=useSelector(store=>store.user)
     const {selectedUser}=useSelector(store=>store.user)
-    console.log(authUser)
     return (
         <div>
             <div ref={scroll} className={`chat ${message?.senderId === authUser?._id ? 'chat-end' : 'chat-start'}`}>

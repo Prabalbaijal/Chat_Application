@@ -28,7 +28,7 @@ function Registration() {
         navigate("/login")
         toast.success(res.data.message)
       }
-      console.log(res)
+
     } catch (error) {
       toast.error(error.response.data.message)
       console.log(error)
