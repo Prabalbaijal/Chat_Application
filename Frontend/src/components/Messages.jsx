@@ -2,9 +2,11 @@ import React from 'react'
 import Message from './Message'
 import useGetMessages from '../hooks/UseGetMessages'
 import { useSelector } from 'react-redux'
+import useGetRealTimeMsg from '../hooks/useGetRealTImeMsg'
 
 function Messages() {
   useGetMessages()
+  useGetRealTimeMsg()
   const {messages}=useSelector(store=>store.message)
   return (
     <div className='flex-1 px-4 overflow-auto felx-col'>

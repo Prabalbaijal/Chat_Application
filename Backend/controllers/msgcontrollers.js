@@ -1,5 +1,7 @@
 import {Chat} from '../data_models/Chat.js'
 import {Message} from '../data_models/message.js'
+import { getReceiverSocketId, io } from '../socket/socket.js'
+
 export const sendMsg=async(req,res)=>{
     try{
         const senderId=req.id
@@ -23,12 +25,17 @@ export const sendMsg=async(req,res)=>{
         if(newMsg){
             conversation.message.push(newMsg._id)
         }
-        await conversation.save()
+        await Promise.all([conversation.save(),newMsg.save()])
+
+        const receiverSocketId=getReceiverSocketId(receiverId)
+        if(receiverSocketId){
+            io.to(receiverSocketId).emit("newMsg",newMsg)
+        }
 
         return res.status(201).json({
             newMsg
         })
-        //Socket Io 
+
     }catch(error){
         console.log(error)
     }

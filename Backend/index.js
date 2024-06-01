@@ -5,10 +5,11 @@ import userRoutes from './routes/userRoutes.js'
 import msgroute from './routes/msgroute.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import {app,server} from "./socket/socket.js"
 
 dotenv.config({})
 
-const app=express()
+// const app=express()
 
 const PORT=process.env.PORT || 6000
 
@@ -25,7 +26,7 @@ app.use(cors(corsOptions))
 app.use("/api/v1/user",userRoutes)
 app.use("/api/v1/message",msgroute)
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectDB()
     console.log(`Server Detected ${PORT}`)
 })
