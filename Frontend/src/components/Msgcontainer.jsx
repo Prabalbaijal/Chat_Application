@@ -8,7 +8,11 @@ function Msgcontainer() {
     const {selectedUser,onlineUsers}=useSelector(store=>store.user)
     const dispatch=useDispatch()
     
-    const isOnline=onlineUsers.includes(selectedUser?._id)
+    useEffect(()=>{
+        return ()=>dispatch(setSelectedUser(null))
+    },[])
+    
+    const isOnline=onlineUsers?.includes(selectedUser?._id)
     return (
         <>
         {

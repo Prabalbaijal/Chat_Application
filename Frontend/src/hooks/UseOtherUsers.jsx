@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
-import {useDispatch} from 'react-redux'
-import { setOtherUsers } from '../redux/userslice'
+import {useDispatch, useSelector} from 'react-redux'
+import { setAuthUser, setOtherUsers } from '../redux/userslice'
 
 function useOtherUsers() {
     const dispatch=useDispatch()

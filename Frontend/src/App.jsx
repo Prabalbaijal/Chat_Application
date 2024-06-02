@@ -45,7 +45,6 @@ function App() {
     }
     else{
       if(socket){
-
         socket.close()
         dispatch(setSocket(null))
       }
