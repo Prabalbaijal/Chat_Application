@@ -52,8 +52,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { username, password } = req.body
-        if (!username || !password)
+        if (!username || !password){
             return res.status(400).json({ message: "Please fill all the required fields." })
+        }
         const user = await User.findOne({ username })
         if (!user) {
             return res.status(400).json({

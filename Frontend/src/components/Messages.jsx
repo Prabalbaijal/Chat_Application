@@ -2,7 +2,7 @@ import React from 'react'
 import Message from './Message'
 import useGetMessages from '../hooks/UseGetMessages'
 import { useSelector } from 'react-redux'
-import useGetRealTimeMsg from '../hooks/useGetRealTImeMsg'
+import useGetRealTimeMsg from '../hooks/useGetRealTimeMsg'
 
 function Messages() {
   useGetMessages()
@@ -13,9 +13,7 @@ function Messages() {
       {
         messages && messages?.map((message)=>{
           return(
-            <>
             <Message key={message._id} message={message}/>
-            </>
           )
         })
       }

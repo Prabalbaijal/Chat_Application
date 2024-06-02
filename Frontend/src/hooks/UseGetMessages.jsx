@@ -17,7 +17,7 @@ function useGetMessages() {
                 }
             }
             getMessages()
-        },[selectedUser])
+        },[selectedUser?._id,setMessages])
 }
 
 export default useGetMessages

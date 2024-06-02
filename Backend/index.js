@@ -5,7 +5,7 @@ import userRoutes from './routes/userRoutes.js'
 import msgroute from './routes/msgroute.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import {app,server} from "./socket/socket.js"
+import {server,app} from "./socket/socket.js"
 
 dotenv.config({})
 

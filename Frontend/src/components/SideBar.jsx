@@ -44,7 +44,6 @@ function SideBar() {
         <input 
         value={search}
         onChange={(e)=>setSearch(e.target.value)}
-        type='text' 
         className='bg-white border-black rounded-r-none md:w-[400px] sm:w-[120px] min-[100px]:w-[110px] rounded-l-2xl input input-bordered mb-0' 
         placeholder='Search...' />
         <button type='submit' className='bg-[#646EE4] min-[100px]:w-[10px] border-none rounded-none sm:w-[40px] md:w-[45px] btn'>

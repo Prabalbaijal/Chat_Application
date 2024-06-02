@@ -23,10 +23,11 @@ function Login() {
         withCredentials: true
       })
         navigate("/")
-        toast.success(`Welcome ${res.data.name}`,{
-          icon:'👋'
-        })
+        console.log(res)
       dispatch(setAuthUser(res.data))
+      toast.success(`Welcome ${res.data.name}`,{
+        icon:'👋'
+      })
     } catch (error) {
       if(error.response)
       toast.error(error.response.data.message)
@@ -35,7 +36,7 @@ function Login() {
     }
     setUser({
       username:"",
-      password:"",
+      password:""
     })
   }
   return (

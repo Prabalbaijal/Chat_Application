@@ -16,7 +16,7 @@ function Msgcontainer() {
     return (
         <>
         {
-            selectedUser?(
+            selectedUser!==null ?(
                 <div className='gap-2 flex flex-col min-[100px]:w-[300px] md:w-[700px] sm:w-[800px] sm:h-[480px] min-[100px]:h-[380px]'>
             <div className='flex flex-wrap items-center gap-2 p-3 text-white bg-[#646EE4] rounded-lg'>
             <div className={`avatar ${isOnline?'online':''}`}>

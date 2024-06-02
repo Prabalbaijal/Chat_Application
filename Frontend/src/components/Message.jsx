@@ -3,25 +3,28 @@ import { useSelector } from 'react-redux'
 
 function Message({message}) {
     const scroll=useRef()
+    const {authUser,selectedUser}=useSelector(store=>store.user)
+    console.log(authUser)
+    console.log(message)
+    console.log(selectedUser)
     useEffect(()=>{
         scroll.current?.scrollIntoView({behavior:"smooth"})
     },[message])
-    const {authUser}=useSelector(store=>store.user)
-    const {selectedUser}=useSelector(store=>store.user)
-    return (
-        <div>
+    return(
             <div ref={scroll} className={`chat ${message?.senderId === authUser?._id ? 'chat-end' : 'chat-start'}`}>
                 <div className="chat-image avatar">
                     <div className="w-10 rounded-full">
                         <img alt="Tailwind CSS chat bubble component" src={message?.senderId === authUser?._id ? authUser?.profilepic  : selectedUser?.profilepic } />
                     </div>
                 </div>
-                <div className="bg-[#1ABCFD] chat-bubble text-white">{message?.message}</div>
+                <div className="chat-header">
+                    <time className="text-xs text-white opacity-50">12</time>
+                </div>
+                <div className={`chat-bubble ${message?.senderId !== authUser?._id ? 'bg-gray-200 text-black' : ''} `}>{message?.message}</div>
                 <div className="opacity-50 chat-footer">
                 </div>
             </div>
-        </div>
     )
 }
-
+// className="bg-[#1ABCFD] chat-bubble text-white
 export default Message

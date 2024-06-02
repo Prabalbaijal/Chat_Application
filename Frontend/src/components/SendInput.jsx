@@ -20,6 +20,7 @@ function SendInput() {
           withCredentials:true
         }
         )
+        console.log(res)
         dispatch(setMessages([...messages,res?.data?.newMsg]))
     } catch (error) {
       console.log(error)
@@ -27,7 +28,7 @@ function SendInput() {
     setMessage("")
   }
   return (
-    <form onSubmit={onSubmitHandler} action='' className='relative'>
+    <form onSubmit={onSubmitHandler} className='relative'>
         <div className='absolute flex w-full p-0'>
             <input
             value={message}
