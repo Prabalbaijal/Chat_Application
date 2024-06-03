@@ -17,14 +17,11 @@ function Message({message}) {
                         <img alt="Tailwind CSS chat bubble component" src={message?.senderId === authUser?._id ? authUser?.profilepic  : selectedUser?.profilepic } />
                     </div>
                 </div>
-                <div className="chat-header">
-                    <time className="text-xs text-white opacity-50">12</time>
-                </div>
                 <div className={`chat-bubble ${message?.senderId !== authUser?._id ? 'bg-gray-200 text-black' : ''} `}>{message?.message}</div>
                 <div className="opacity-50 chat-footer">
                 </div>
             </div>
     )
 }
-// className="bg-[#1ABCFD] chat-bubble text-white
+
 export default Message
